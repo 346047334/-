@@ -56,8 +56,8 @@
 }
 
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     if (scrollView.contentOffset.x==DEVICEWIDTH) {
         if (self.secondVC == nil) {
             self.secondVC = [[ViewController2 alloc]init];
@@ -73,7 +73,7 @@
             [self.mianScrollView addSubview:self.thirdVC.view];
         }
         
-
+        
     }else if(scrollView.contentOffset.x==DEVICEWIDTH*3){
         if (self.fourVC ==nil) {
             self.fourVC = [[ViewController4 alloc]init];
@@ -112,8 +112,7 @@
         
     }
     NSLog(@"%f",scrollView.contentOffset.x);
-}
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+
     [self.headerView changeBtnTitleColorWith:scrollView.contentOffset.x/DEVICEWIDTH+100];
 }
 -(void)seletedControllerWith:(UIButton *)btn{
