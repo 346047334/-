@@ -63,6 +63,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9FF2576C1D658D95001592E9 /* class */ = {
+			isa = PBXGroup;
+			children = (
+				9FF6A3031D5E21440099AD86 /* TitleScrollView.h */,
+				9FF6A3041D5E21440099AD86 /* TitleScrollView.m */,
+			);
+			name = class;
+			sourceTree = "<group>";
+		};
 		9FF6A2D71D5E1FCE0099AD86 = {
 			isa = PBXGroup;
 			children = (
@@ -82,10 +91,9 @@
 		9FF6A2E21D5E1FCE0099AD86 /* AddChildVCDemo */ = {
 			isa = PBXGroup;
 			children = (
+				9FF2576C1D658D95001592E9 /* class */,
 				9FF6A2E61D5E1FCE0099AD86 /* AppDelegate.h */,
 				9FF6A2E71D5E1FCE0099AD86 /* AppDelegate.m */,
-				9FF6A3031D5E21440099AD86 /* TitleScrollView.h */,
-				9FF6A3041D5E21440099AD86 /* TitleScrollView.m */,
 				9FF6A2E91D5E1FCE0099AD86 /* ViewController.h */,
 				9FF6A2EA1D5E1FCE0099AD86 /* ViewController.m */,
 				9FF6A2FA1D5E20960099AD86 /* ViewController1.h */,
@@ -312,6 +320,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AddChildVCDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ulucu.AddChildVCDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -323,6 +332,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AddChildVCDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ulucu.AddChildVCDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

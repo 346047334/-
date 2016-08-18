@@ -57,14 +57,15 @@
 
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView.contentOffset.x>0&&scrollView.contentOffset.x<=DEVICEWIDTH) {
+
+    if (scrollView.contentOffset.x==DEVICEWIDTH) {
         if (self.secondVC == nil) {
             self.secondVC = [[ViewController2 alloc]init];
             [self addChildViewController:self.secondVC];
             self.secondVC.view.frame = CGRectMake(DEVICEWIDTH, 0, DEVICEWIDTH, DEVICEHEIGHT - 64);
             [self.mianScrollView addSubview:self.secondVC.view];
         }
-    }else if(scrollView.contentOffset.x>DEVICEWIDTH&&scrollView.contentOffset.x<=DEVICEWIDTH*2){
+    }else if(scrollView.contentOffset.x==DEVICEWIDTH*2){
         if (self.thirdVC ==nil) {
             self.thirdVC = [[ViewController3 alloc]init];
             [self addChildViewController:self.thirdVC];
@@ -73,7 +74,7 @@
         }
         
 
-    }else if(scrollView.contentOffset.x>DEVICEWIDTH*2&&scrollView.contentOffset.x<=DEVICEWIDTH*3){
+    }else if(scrollView.contentOffset.x==DEVICEWIDTH*3){
         if (self.fourVC ==nil) {
             self.fourVC = [[ViewController4 alloc]init];
             [self addChildViewController:self.fourVC];
@@ -82,7 +83,7 @@
         }
         
         
-    }else if(scrollView.contentOffset.x>DEVICEWIDTH*3&&scrollView.contentOffset.x<=DEVICEWIDTH*4){
+    }else if(scrollView.contentOffset.x==DEVICEWIDTH*4){
         if (self.fiveVC ==nil) {
             self.fiveVC = [[ViewController5 alloc]init];
             [self addChildViewController:self.fiveVC];
@@ -91,7 +92,7 @@
         }
         
         
-    }else if(scrollView.contentOffset.x>DEVICEWIDTH*4&&scrollView.contentOffset.x<=DEVICEWIDTH*5){
+    }else if(scrollView.contentOffset.x==DEVICEWIDTH*5){
         if (self.sixVC ==nil) {
             self.sixVC = [[ViewController6 alloc]init];
             [self addChildViewController:self.sixVC];
@@ -100,7 +101,7 @@
         }
         
         
-    }else if(scrollView.contentOffset.x>DEVICEWIDTH*5&&scrollView.contentOffset.x<=DEVICEWIDTH*6){
+    }else if(scrollView.contentOffset.x==DEVICEWIDTH*6){
         if (self.sevenVC ==nil) {
             self.sevenVC = [[ViewController7 alloc]init];
             [self addChildViewController:self.sevenVC];
