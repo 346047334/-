@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9FD9597B1D7FE3C6003D9E66 /* ViewControllerContainer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FD9597A1D7FE3C6003D9E66 /* ViewControllerContainer.plist */; };
 		9FF2574D1D630585001592E9 /* ViewController4.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2574C1D630585001592E9 /* ViewController4.m */; };
 		9FF257501D63058F001592E9 /* ViewController5.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF2574F1D63058F001592E9 /* ViewController5.m */; };
 		9FF257531D6305AC001592E9 /* ViewController6.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF257521D6305AC001592E9 /* ViewController6.m */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9FD9597A1D7FE3C6003D9E66 /* ViewControllerContainer.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ViewControllerContainer.plist; sourceTree = "<group>"; };
 		9FF2574B1D630585001592E9 /* ViewController4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController4.h; sourceTree = "<group>"; };
 		9FF2574C1D630585001592E9 /* ViewController4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController4.m; sourceTree = "<group>"; };
 		9FF2574E1D63058F001592E9 /* ViewController5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController5.h; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			children = (
 				9FF6A3031D5E21440099AD86 /* TitleScrollView.h */,
 				9FF6A3041D5E21440099AD86 /* TitleScrollView.m */,
+				9FD9597A1D7FE3C6003D9E66 /* ViewControllerContainer.plist */,
 			);
 			name = class;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FF6A2F31D5E1FCE0099AD86 /* LaunchScreen.storyboard in Resources */,
+				9FD9597B1D7FE3C6003D9E66 /* ViewControllerContainer.plist in Resources */,
 				9FF6A2F01D5E1FCE0099AD86 /* Assets.xcassets in Resources */,
 				9FF6A2EE1D5E1FCE0099AD86 /* Main.storyboard in Resources */,
 			);
@@ -322,6 +326,7 @@
 				INFOPLIST_FILE = AddChildVCDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-Objc";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ulucu.AddChildVCDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -334,6 +339,7 @@
 				INFOPLIST_FILE = AddChildVCDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-Objc";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ulucu.AddChildVCDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

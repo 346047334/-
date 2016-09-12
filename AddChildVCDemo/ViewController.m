@@ -18,7 +18,10 @@
 #define DEVICEWIDTH [UIScreen mainScreen].bounds.size.width
 #define DEVICEHEIGHT [UIScreen mainScreen].bounds.size.height
 @interface ViewController ()<UIScrollViewDelegate,seletedControllerDelegate>
-
+{
+    NSArray *vcArray;
+    NSMutableArray *markVcArray;//对应的视图是否加载的标识
+}
 @property (nonatomic ,strong) ViewController1  *firstVC;
 @property (nonatomic ,strong) ViewController2 *secondVC;
 @property (nonatomic ,strong) ViewController3  *thirdVC;
@@ -29,12 +32,15 @@
 @property (nonatomic ,strong) TitleScrollView *headerView;
 @property (nonatomic ,strong) UIViewController *currentVC;
 @property (nonatomic ,strong) UIScrollView *mianScrollView;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    vcArray  = [NSArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/ViewControllerContainer.plist",[NSBundle mainBundle].bundlePath]];
+    markVcArray = [NSMutableArray arrayWithObjects:@1,@0,@0,@0,@0,@0,@0, nil];
     self.headerView = [[TitleScrollView alloc]init];
     self.headerView.seletedDelegate = self;
     self.headerView.frame = CGRectMake(0, 20, DEVICEWIDTH, 44);
@@ -51,66 +57,82 @@
     self.firstVC.view.frame = CGRectMake(0, 0, DEVICEWIDTH, DEVICEHEIGHT - 64);
     [self.mianScrollView addSubview:self.firstVC.view];
     
-    
 
 }
 
 
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    if (scrollView.contentOffset.x==DEVICEWIDTH) {
-        if (self.secondVC == nil) {
-            self.secondVC = [[ViewController2 alloc]init];
-            [self addChildViewController:self.secondVC];
-            self.secondVC.view.frame = CGRectMake(DEVICEWIDTH, 0, DEVICEWIDTH, DEVICEHEIGHT - 64);
-            [self.mianScrollView addSubview:self.secondVC.view];
+   
+    for (int i = 0; i<vcArray.count; i++) {
+        if (scrollView.contentOffset.x == DEVICEWIDTH *i ) {
+            Class viewController = NSClassFromString(vcArray[i]);
+            UIViewController * controller;
+            if ([markVcArray[i] intValue]== 0) {
+                controller   = [[viewController alloc]init];
+                [markVcArray addObject:controller];
+                [self addChildViewController:controller];
+                controller.view.frame = CGRectMake(DEVICEWIDTH*i, 0, DEVICEWIDTH, DEVICEHEIGHT - 64);
+                [self.mianScrollView addSubview:controller.view];
+                markVcArray[i] = @(1);
+            }
+            
+            
         }
-    }else if(scrollView.contentOffset.x==DEVICEWIDTH*2){
-        if (self.thirdVC ==nil) {
-            self.thirdVC = [[ViewController3 alloc]init];
-            [self addChildViewController:self.thirdVC];
-            self.thirdVC.view.frame = CGRectMake(DEVICEWIDTH*2, 0, DEVICEWIDTH, DEVICEHEIGHT - 64);
-            [self.mianScrollView addSubview:self.thirdVC.view];
-        }
-        
-        
-    }else if(scrollView.contentOffset.x==DEVICEWIDTH*3){
-        if (self.fourVC ==nil) {
-            self.fourVC = [[ViewController4 alloc]init];
-            [self addChildViewController:self.fourVC];
-            self.fourVC.view.frame = CGRectMake(DEVICEWIDTH*3, 0, DEVICEWIDTH, DEVICEHEIGHT - 64);
-            [self.mianScrollView addSubview:self.fourVC.view];
-        }
-        
-        
-    }else if(scrollView.contentOffset.x==DEVICEWIDTH*4){
-        if (self.fiveVC ==nil) {
-            self.fiveVC = [[ViewController5 alloc]init];
-            [self addChildViewController:self.fiveVC];
-            self.fiveVC.view.frame = CGRectMake(DEVICEWIDTH*4, 0, DEVICEWIDTH, DEVICEHEIGHT - 64);
-            [self.mianScrollView addSubview:self.fiveVC.view];
-        }
-        
-        
-    }else if(scrollView.contentOffset.x==DEVICEWIDTH*5){
-        if (self.sixVC ==nil) {
-            self.sixVC = [[ViewController6 alloc]init];
-            [self addChildViewController:self.sixVC];
-            self.sixVC.view.frame = CGRectMake(DEVICEWIDTH*5, 0, DEVICEWIDTH, DEVICEHEIGHT - 64);
-            [self.mianScrollView addSubview:self.sixVC.view];
-        }
-        
-        
-    }else if(scrollView.contentOffset.x==DEVICEWIDTH*6){
-        if (self.sevenVC ==nil) {
-            self.sevenVC = [[ViewController7 alloc]init];
-            [self addChildViewController:self.sevenVC];
-            self.sevenVC.view.frame = CGRectMake(DEVICEWIDTH*6, 0, DEVICEWIDTH, DEVICEHEIGHT - 64);
-            [self.mianScrollView addSubview:self.sevenVC.view];
-        }
-        
-        
     }
+//    if (scrollView.contentOffset.x==DEVICEWIDTH) {
+//        if (self.secondVC == nil) {
+//            self.secondVC = [[ViewController2 alloc]init];
+//            [self addChildViewController:self.secondVC];
+//            self.secondVC.view.frame = CGRectMake(DEVICEWIDTH, 0, DEVICEWIDTH, DEVICEHEIGHT - 64);
+//            [self.mianScrollView addSubview:self.secondVC.view];
+//        }
+//    }else if(scrollView.contentOffset.x==DEVICEWIDTH*2){
+//        if (self.thirdVC ==nil) {
+//            self.thirdVC = [[ViewController3 alloc]init];
+//            [self addChildViewController:self.thirdVC];
+//            self.thirdVC.view.frame = CGRectMake(DEVICEWIDTH*2, 0, DEVICEWIDTH, DEVICEHEIGHT - 64);
+//            [self.mianScrollView addSubview:self.thirdVC.view];
+//        }
+//        
+//        
+//    }else if(scrollView.contentOffset.x==DEVICEWIDTH*3){
+//        if (self.fourVC ==nil) {
+//            self.fourVC = [[ViewController4 alloc]init];
+//            [self addChildViewController:self.fourVC];
+//            self.fourVC.view.frame = CGRectMake(DEVICEWIDTH*3, 0, DEVICEWIDTH, DEVICEHEIGHT - 64);
+//            [self.mianScrollView addSubview:self.fourVC.view];
+//        }
+//        
+//        
+//    }else if(scrollView.contentOffset.x==DEVICEWIDTH*4){
+//        if (self.fiveVC ==nil) {
+//            self.fiveVC = [[ViewController5 alloc]init];
+//            [self addChildViewController:self.fiveVC];
+//            self.fiveVC.view.frame = CGRectMake(DEVICEWIDTH*4, 0, DEVICEWIDTH, DEVICEHEIGHT - 64);
+//            [self.mianScrollView addSubview:self.fiveVC.view];
+//        }
+//        
+//        
+//    }else if(scrollView.contentOffset.x==DEVICEWIDTH*5){
+//        if (self.sixVC ==nil) {
+//            self.sixVC = [[ViewController6 alloc]init];
+//            [self addChildViewController:self.sixVC];
+//            self.sixVC.view.frame = CGRectMake(DEVICEWIDTH*5, 0, DEVICEWIDTH, DEVICEHEIGHT - 64);
+//            [self.mianScrollView addSubview:self.sixVC.view];
+//        }
+//        
+//        
+//    }else if(scrollView.contentOffset.x==DEVICEWIDTH*6){
+//        if (self.sevenVC ==nil) {
+//            self.sevenVC = [[ViewController7 alloc]init];
+//            [self addChildViewController:self.sevenVC];
+//            self.sevenVC.view.frame = CGRectMake(DEVICEWIDTH*6, 0, DEVICEWIDTH, DEVICEHEIGHT - 64);
+//            [self.mianScrollView addSubview:self.sevenVC.view];
+//        }
+//        
+//        
+//    }
     NSLog(@"%f",scrollView.contentOffset.x);
 
     [self.headerView changeBtnTitleColorWith:scrollView.contentOffset.x/DEVICEWIDTH+100];
